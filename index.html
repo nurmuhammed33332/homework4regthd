@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор оценки</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .mode-switch {
+            margin-bottom: 20px;
+        }
+        .dice-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            min-height: 80px;
+            align-items: center;
+        }
+        .die {
+            font-size: 48px;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            background-color: #eef2f3;
+            border: 2px solid #cbd5e1;
+            border-radius: 12px;
+            font-weight: bold;
+            color: #1e293b;
+            transition: transform 0.1s ease;
+        }
+        button {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #2563eb;
+        }
+        .result-text {
+            font-size: 20px;
+            margin: 20px 0;
+            font-weight: 600;
+            color: #475569;
+            min-height: 30px;
+        }
+        .triplet {
+            color: #16a34a !important;
+            font-size: 24px;
+            animation: celebrate 0.5s ease;
+        }
+        .stats {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            text-align: left;
+        }
+        .stats h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            color: #64748b;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .stat-item {
+            background: #f8fafc;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #334155;
+            border: 1px solid #f1f5f9;
+        }
+        @keyframes celebrate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🎲 Генератор оценки</h1>
+    
+    <div class="mode-switch">
+        <label>
+            <input type="checkbox" id="bonusMode"> Режим: 3 кубика (Бонус)
+        </label>
+    </div>
+
+    <div class="dice-container" id="diceContainer">
+        <div class="die" id="die1">-</div>
+    </div>
+
+    <button id="rollBtn">Бросить кубик</button>
+
+    <div class="result-text" id="resultText">Нажмите кнопку, чтобы начать</div>
+
+    <div class="stats">
+        <h3>Статистика выпадений:</h3>
+        <div class="stats-grid">
+            <div class="stat-item">1: <span id="stat1">0</span></div>
+            <div class="stat-item">2: <span id="stat2">0</span></div>
+            <div class="stat-item">3: <span id="stat3">0</span></div>
+            <div class="stat-item">4: <span id="stat4">0</span></div>
+            <div class="stat-item">5: <span id="stat5">0</span></div>
+            <div class="stat-item">6: <span id="stat6">0</span></div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
